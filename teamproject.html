@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Event Management</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f5f5f5;
+}
+
+header{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+nav{
+background:#444;
+text-align:center;
+padding:10px;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#ffcc00;
+}
+
+section{
+padding:40px;
+text-align:center;
+}
+
+.events{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.card{
+background:white;
+width:250px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+.card button{
+background:#222;
+color:white;
+border:none;
+padding:10px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.card button:hover{
+background:#ff9800;
+}
+
+form{
+max-width:400px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button.submit{
+background:#222;
+color:white;
+padding:10px;
+border:none;
+cursor:pointer;
+}
+
+#message{
+margin-top:20px;
+font-size:18px;
+color:green;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Event Management System</h1>
+<p>Book Your Favourite Events</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#events">Events</a>
+<a href="#register">Register</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+<h2>Welcome</h2>
+<p>We organize concerts, weddings, corporate events and festivals.</p>
+</section>
+
+<section id="events">
+<h2>Upcoming Events</h2>
+
+<div class="events">
+
+<div class="card">
+<h3>Music Concert</h3>
+<p>Date: April 20</p>
+<button onclick="selectEvent('Music Concert')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>Wedding Expo</h3>
+<p>Date: May 10</p>
+<button onclick="selectEvent('Wedding Expo')">Book Now</button>
+</div>
+
+<div class="card">
+<h3>Food Festival</h3>
+<p>Date: June 5</p>
+<button onclick="selectEvent('Food Festival')">Book Now</button>
+</div>
+
+</div>
+</section>
+
+<section id="register">
+<h2>Event Registration</h2>
+
+<form id="eventForm">
+
+<input type="text" id="name" placeholder="Your Name">
+
+<input type="email" id="email" placeholder="Your Email">
+
+<select id="event">
+<option value="">Select Event</option>
+<option>Music Concert</option>
+<option>Wedding Expo</option>
+<option>Food Festival</option>
+</select>
+
+<button type="submit" class="submit">Register</button>
+
+</form>
+
+<div id="message"></div>
+
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: info@events.com</p>
+<p>Phone: +91 9876543210</p>
+</section>
+
+<footer>
+<p>© 2026 Event Management System</p>
+</footer>
+
+<script>
+
+function selectEvent(eventName){
+document.getElementById("event").value = eventName;
+window.location="#register";
+}
+
+document.getElementById("eventForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let event=document.getElementById("event").value;
+
+if(name=="" || email=="" || event==""){
+alert("Please fill all fields");
+return;
+}
+
+document.getElementById("message").innerHTML=
+"Thank you "+name+"! Your registration for "+event+" is successful.";
+
+this.reset();
+
+});
+
+</script>
+
+</body>
+</html>
